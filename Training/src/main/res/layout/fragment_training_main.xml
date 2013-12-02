@@ -9,8 +9,21 @@
     tools:context=".TrainingMainActivity$PlaceholderFragment">
 
     <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/sign_in"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sign_in_button_height"
+        android:text="@string/sign_in"
+        android:gravity="left|center_vertical"
+        android:drawableRight="@drawable/right_arrow"
+        />
 
+    <HorizontalScrollView
+        android:id="@+id/carousel"
+        android:layout_below="@+id/sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_carousel">
+        
+
+    </HorizontalScrollView>
 </RelativeLayout>
