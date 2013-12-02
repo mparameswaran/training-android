@@ -20,10 +20,24 @@
 
     <HorizontalScrollView
         android:id="@+id/carousel"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         android:layout_below="@+id/sign_in"
         android:layout_width="match_parent"
         android:layout_height="@dimen/main_carousel">
-        
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Button1" />
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Button2" />
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Button3" />
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Button4" />
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Button5" />
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Button6" />
+
+           </LinearLayout>
 
     </HorizontalScrollView>
 </RelativeLayout>
