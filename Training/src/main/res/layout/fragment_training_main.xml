@@ -10,6 +10,7 @@
     <EditText android:id="@+id/inputSearch"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ic_search"
         android:hint="@string/search_KLOUD"
         android:inputType="textVisiblePassword"/>
     <TextView
