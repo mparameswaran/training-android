@@ -3,7 +3,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="sign_in_button_height">50dp</dimen>
-    <dimen name="sign_in_drawable_padding">15dp</dimen>
-    <dimen name="main_carousel">200dp</dimen>
+    <dimen name="sign_in_drawable_padding">10dp</dimen>
+    <dimen name="main_carousel">100dp</dimen>
+    <dimen name="training_width">120dp</dimen>
+    <dimen name="training_height">80dp</dimen>
+    <dimen name="training_padding">10dp</dimen>
+    <dimen name="about_training_width">210dp</dimen>
+    <dimen name="learning__objective_height">180dp</dimen><dimen name="rating_width">100dp</dimen>
 
 </resources>
