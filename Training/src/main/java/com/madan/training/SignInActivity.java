@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,12 +24,22 @@ public class SignInActivity extends Activity{
         final EditText username = (EditText) this.findViewById(R.id.username);
         final EditText password = (EditText) this.findViewById(R.id.password);
         final Context context = this;
+        final SignInActivity signInActivity = SignInActivity.this;
         Button signIn = (Button) this.findViewById(R.id.sign_in_button);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(username.getText() != null && username.getText().toString().trim().equals(getResources().getString(R.string.registered_user)) && password.getText() != null && password.getText().toString().trim().equals(getResources().getString(R.string.secret))){
-                    Log.i("Login","Valid login");
+                    SharedPreferences preferences = getApplicationContext().getSharedPreferences("default_preferences", context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("isLoggedIn",true);
+                    editor.putString("username", username.getText().toString().trim());
+                    editor.commit();
+                    Intent intent = new Intent(signInActivity, TrainingMainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+
                 }
                 else
                 {

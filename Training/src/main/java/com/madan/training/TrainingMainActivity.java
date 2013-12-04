@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TrainingMainActivity extends Activity {
 
@@ -62,17 +65,35 @@ public class TrainingMainActivity extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_training_main, container, false);
-            TextView signIn = (TextView) rootView.findViewById(R.id.sign_in);
-            signIn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            View  rootView = inflater.inflate(R.layout.fragment_training_main, container, false);
 
-                    Log.i("Click", "sign in");
-                    Intent intent = new Intent(getMainMactivity(),SignInActivity.class);
-                    startActivity(intent);
-                }
-            });
+            rootView.requestFocus();
+            TextView signIn = (TextView) rootView.findViewById(R.id.sign_in);
+
+            SharedPreferences preferences = this.mainMactivity.getApplicationContext().getSharedPreferences("default_preferences", getMainMactivity().MODE_PRIVATE);
+            Boolean loggedIn = preferences.getBoolean("isLoggedIn", false);
+            String username = preferences.getString("username", getResources().getString(R.string.registered_user));
+            Log.i("Is Logged in", loggedIn.toString() );
+            if (loggedIn){
+
+                Toast.makeText(this.mainMactivity.getApplicationContext(), "Logged in as "+username, Toast.LENGTH_LONG).show();
+                signIn.setVisibility(View.INVISIBLE);
+            }
+            else{
+
+
+                signIn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Log.i("Click", "sign in");
+                        Intent intent = new Intent(getMainMactivity(),SignInActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+
             return rootView;
         }
 
