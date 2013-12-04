@@ -3,13 +3,16 @@ package com.madan.training;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.TextView;
 
 public class TrainingMainActivity extends Activity {
 
@@ -20,7 +23,7 @@ public class TrainingMainActivity extends Activity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new PlaceholderFragment(this))
                     .commit();
         }
     }
@@ -51,14 +54,35 @@ public class TrainingMainActivity extends Activity {
      */
     public static class PlaceholderFragment extends Fragment {
 
-        public PlaceholderFragment() {
+        private Activity mainMactivity;
+        public PlaceholderFragment(Activity activity) {
+            setMainMactivity(activity);
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_training_main, container, false);
+            TextView signIn = (TextView) rootView.findViewById(R.id.sign_in);
+            signIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Log.i("Click", "sign in");
+                    Intent intent = new Intent(getMainMactivity(),SignInActivity.class);
+                    startActivity(intent);
+                }
+            });
             return rootView;
+        }
+
+
+        public Activity getMainMactivity() {
+            return mainMactivity;
+        }
+
+        public void setMainMactivity(Activity mainMactivity) {
+            this.mainMactivity = mainMactivity;
         }
     }
 
