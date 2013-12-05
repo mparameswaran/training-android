@@ -21,5 +21,6 @@
     <string name="incorrect_login">Username or password is incorrect.</string>
     <string name="incorrect_login_title">Login Error</string>
     <string name="okay">Ok</string>
+    <string name="module_title">New MDC Modules</string>
 
 </resources>

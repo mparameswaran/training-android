@@ -69,7 +69,7 @@ public class TrainingMainActivity extends Activity {
 
             rootView.requestFocus();
             TextView signIn = (TextView) rootView.findViewById(R.id.sign_in);
-
+            EditText search = (EditText) rootView.findViewById(R.id.input_search);
             SharedPreferences preferences = this.mainMactivity.getApplicationContext().getSharedPreferences("default_preferences", getMainMactivity().MODE_PRIVATE);
             Boolean loggedIn = preferences.getBoolean("isLoggedIn", false);
             String username = preferences.getString("username", getResources().getString(R.string.registered_user));
@@ -77,11 +77,12 @@ public class TrainingMainActivity extends Activity {
             if (loggedIn){
 
                 Toast.makeText(this.mainMactivity.getApplicationContext(), "Logged in as "+username, Toast.LENGTH_LONG).show();
+                search.setHint(getResources().getString(R.string.keeping_you_awake));
                 signIn.setVisibility(View.INVISIBLE);
             }
             else{
 
-
+                search.setHint(getResources().getString(R.string.search_KLOUD));
                 signIn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
