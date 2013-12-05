@@ -22,5 +22,9 @@
     <string name="incorrect_login_title">Login Error</string>
     <string name="okay">Ok</string>
     <string name="module_title">New MDC Modules</string>
+    <string name="action_about">About</string>
+    <string name="about_title">Learning</string>
+    <string name="about_message">This android application is simply a proof of concept. Some functionality may not work as intended.</string>
+    <string name="view_by_theme">View by Theme</string>
 
 </resources>

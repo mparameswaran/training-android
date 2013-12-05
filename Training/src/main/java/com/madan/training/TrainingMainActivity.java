@@ -1,8 +1,9 @@
 package com.madan.training;
 
 import android.app.Activity;
-import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,9 +46,28 @@ public class TrainingMainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.action_about:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(getResources().getString(R.string.about_title));
+                builder.setMessage(getResources().getString(R.string.about_message));
+                builder.setPositiveButton(getResources().getString(R.string.okay),new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+                return true;
+            case R.id.sign_in_menu:
+                Intent intent = new Intent(TrainingMainActivity.this,SignInActivity.class);
+                startActivity(intent);
+                return true;
+
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -68,7 +87,16 @@ public class TrainingMainActivity extends Activity {
             View  rootView = inflater.inflate(R.layout.fragment_training_main, container, false);
 
             rootView.requestFocus();
-            TextView signIn = (TextView) rootView.findViewById(R.id.sign_in);
+            TextView viewByTheme = (TextView) rootView.findViewById(R.id.view_by_theme);
+            viewByTheme.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Log.i("Click", "sign in");
+                    Intent intent = new Intent(getMainMactivity(), SignInActivity.class);
+                    startActivity(intent);
+                }
+            });
             EditText search = (EditText) rootView.findViewById(R.id.input_search);
             SharedPreferences preferences = this.mainMactivity.getApplicationContext().getSharedPreferences("default_preferences", getMainMactivity().MODE_PRIVATE);
             Boolean loggedIn = preferences.getBoolean("isLoggedIn", false);
@@ -78,20 +106,12 @@ public class TrainingMainActivity extends Activity {
 
                 Toast.makeText(this.mainMactivity.getApplicationContext(), "Logged in as "+username, Toast.LENGTH_LONG).show();
                 search.setHint(getResources().getString(R.string.keeping_you_awake));
-                signIn.setVisibility(View.INVISIBLE);
+
             }
             else{
 
                 search.setHint(getResources().getString(R.string.search_KLOUD));
-                signIn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
 
-                        Log.i("Click", "sign in");
-                        Intent intent = new Intent(getMainMactivity(),SignInActivity.class);
-                        startActivity(intent);
-                    }
-                });
             }
 
 

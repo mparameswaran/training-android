@@ -16,18 +16,20 @@
         android:hint="@string/search_KLOUD"
         android:inputType="textVisiblePassword"/>
     <TextView
-        android:id="@+id/sign_in"
+        android:id="@+id/view_by_theme"
         android:clickable="true"
         android:layout_below="@+id/input_search"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sign_in_button_height"
-        android:text="@string/sign_in"
+        android:text="@string/view_by_theme"
+        android:paddingLeft="10dp"
+        android:textSize="20dp"
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/right_arrow"
         />
     <LinearLayout
         android:id="@+id/banners"
-        android:layout_below="@+id/sign_in"
+        android:layout_below="@+id/view_by_theme"
         android:layout_width="match_parent"
         android:layout_height="@dimen/banner_height"
         android:orientation="horizontal"
