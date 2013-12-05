@@ -9,9 +9,12 @@
     <dimen name="training_height">125dp</dimen>
     <dimen name="training_padding">10dp</dimen>
     <dimen name="about_training_width">210dp</dimen>
-    <dimen name="learning__objective_height">180dp</dimen><dimen name="rating_width">100dp</dimen>
+    <dimen name="learning__objective_height">180dp</dimen>
+    <dimen name="rating_width">100dp</dimen>
     <dimen name="banner_height">150dp</dimen>
     <dimen name="view_module_text_height">60dp</dimen>
     <dimen name="banner_padding">5dp</dimen>
+    <dimen name="about_training_text">125dp</dimen>
+    <dimen name="default_title_size">20dp</dimen>
 
 </resources>

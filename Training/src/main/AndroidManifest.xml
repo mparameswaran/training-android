@@ -22,10 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.madan.training.SignInActivity"
-            android:label="@string/app_name">
-
-          </activity>
+        <activity
+            android:name="com.madan.training.SignInActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.madan.training.TrainingDetail"
+            android:label="@string/title_activity_training_detail" >
+        </activity>
     </application>
 
 </manifest>

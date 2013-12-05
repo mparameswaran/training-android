@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,12 +91,29 @@ public class TrainingMainActivity extends Activity {
 
             rootView.requestFocus();
             TextView viewByTheme = (TextView) rootView.findViewById(R.id.view_by_theme);
+            LinearLayout carousel = (LinearLayout) rootView.findViewById(R.id.linear_layout_carousel);
+            final int trainingPrograms = carousel.getChildCount();
+            for (int i = 0; i < trainingPrograms; i++){
+
+                RelativeLayout trainingProgram = (RelativeLayout) carousel.getChildAt(i);
+                final TextView trainingTextView = (TextView) trainingProgram.getChildAt(1);
+                trainingProgram.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getMainMactivity(), TrainingDetail.class);
+                        String training = trainingTextView.getText().toString();
+                        intent.putExtra("title", training);
+                        startActivity(intent);
+                    }
+                });
+
+            }
             viewByTheme.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     Log.i("Click", "sign in");
-                    Intent intent = new Intent(getMainMactivity(), SignInActivity.class);
+                    Intent intent = new Intent(getMainMactivity(), TrainingDetail.class);
                     startActivity(intent);
                 }
             });

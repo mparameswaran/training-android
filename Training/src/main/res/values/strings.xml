@@ -11,7 +11,9 @@
     <string name="training_four">Android</string>
     <string name="training_five">Git</string>
     <string name="training_six">Python</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</string>
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </string>
     <string name="search_KLOUD">Search KLOUD</string>
     <string name="keeping_you_awake">What\'s keeping you awake?</string>
     <string name="username">Username or Email</string>
@@ -26,5 +28,11 @@
     <string name="about_title">Learning</string>
     <string name="about_message">This android application is simply a proof of concept. Some functionality may not work as intended.</string>
     <string name="view_by_theme">View by Theme</string>
+    <string name="title_activity_training_detail">Detail</string>
+    <string name="about_this_training">About This Training</string>
+    <string name="learning_objectives">Learning Objectives</string>
+    <string name="learning_objective_one">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
+    <string name="learning_objective_two">Excepteur sint occaecat cupidatat non proident.</string>
+    <string name="learning_objective_three">Sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
 </resources>
