@@ -3,6 +3,7 @@ package com.madan.training;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,26 +22,71 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class TrainingMainActivity extends Activity {
-
+    private Boolean isLoggedInFlag;
+    private Menu menu;
+    private Bundle savedInstanceState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_main);
+        SharedPreferences preferences = this.getApplicationContext().getSharedPreferences("default_preferences", this.MODE_PRIVATE);
+        setIsLoggedInFlag(preferences.getBoolean("isLoggedIn", false));
+        PlaceholderFragment defaultHomeScreen = new PlaceholderFragment(this);
+        if(preferences.getBoolean("didLogOut",false)){
+            Toast.makeText(this, getResources().getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
 
+        }
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment(this))
-                    .commit();
+            if(!getIsLoggedInFlag()){
+
+
+                    getFragmentManager().beginTransaction()
+                        .replace(R.id.container, defaultHomeScreen)
+                        .commit();
+
+
+            }
+            else{
+
+
+                getFragmentManager().beginTransaction().replace(R.id.container, new SignedInHomeScreenFragment(this)).commit();
+
+            }
+
+        }
+        else {
+            this.savedInstanceState = savedInstanceState;
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.training_main, menu);
+
+        this.menu = menu;
+        if(getIsLoggedInFlag()){
+            getMenuInflater().inflate(R.menu.training_main_logout, menu);
+
+        }
+        else{
+            getMenuInflater().inflate(R.menu.training_main, menu);
+        }
+
+
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -67,11 +113,44 @@ public class TrainingMainActivity extends Activity {
             case R.id.sign_in_menu:
                 Intent intent = new Intent(TrainingMainActivity.this,SignInActivity.class);
                 startActivity(intent);
+                this.invalidateOptionsMenu();
                 return true;
+            case R.id.log_out_menu:
+                SharedPreferences preferences = (TrainingMainActivity.this).getApplicationContext().getSharedPreferences("default_preferences", this.MODE_PRIVATE);
+                preferences.edit().putBoolean("isLoggedIn",false).commit();
+                preferences.edit().putString("username", "").commit();
+                preferences.edit().putBoolean("didLogOut",true).commit();
+
+                invalidateOptionsMenu();
+
+                
+                Intent refresh = new Intent(TrainingMainActivity.this, TrainingMainActivity.class);
+                startActivity(refresh);
+                finish();
+
+
+                return true;
+
 
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public Boolean getIsLoggedInFlag() {
+        return isLoggedInFlag;
+    }
+
+    public void setIsLoggedInFlag(Boolean isLoggedInFlag) {
+        this.isLoggedInFlag = isLoggedInFlag;
+    }
+
+    public Bundle getSavedInstanceState() {
+        return savedInstanceState;
     }
 
     /**
@@ -82,6 +161,7 @@ public class TrainingMainActivity extends Activity {
         private Activity mainMactivity;
         public PlaceholderFragment(Activity activity) {
             setMainMactivity(activity);
+
         }
 
         @Override
@@ -117,23 +197,6 @@ public class TrainingMainActivity extends Activity {
                     startActivity(intent);
                 }
             });
-            EditText search = (EditText) rootView.findViewById(R.id.input_search);
-            SharedPreferences preferences = this.mainMactivity.getApplicationContext().getSharedPreferences("default_preferences", getMainMactivity().MODE_PRIVATE);
-            Boolean loggedIn = preferences.getBoolean("isLoggedIn", false);
-            String username = preferences.getString("username", getResources().getString(R.string.registered_user));
-            Log.i("Is Logged in", loggedIn.toString() );
-            if (loggedIn){
-
-                Toast.makeText(this.mainMactivity.getApplicationContext(), "Logged in as "+username, Toast.LENGTH_LONG).show();
-                search.setHint(getResources().getString(R.string.keeping_you_awake));
-
-            }
-            else{
-
-                search.setHint(getResources().getString(R.string.search_KLOUD));
-
-            }
-
 
             return rootView;
         }

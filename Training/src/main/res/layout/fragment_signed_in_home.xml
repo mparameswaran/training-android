@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".TrainingMainActivity$PlaceholderFragment">
+    <EditText android:id="@+id/signed_in_input_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ic_search"
+        android:drawablePadding="5dp"
+        android:hint="@string/keeping_you_awake"
+        android:inputType="textVisiblePassword"/>
+
+    <LinearLayout
+        android:id="@+id/banners"
+        android:layout_below="@+id/signed_in_input_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/banner_height"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/banner_height"
+            android:src="@drawable/banner_amazon"
+            android:padding="@dimen/banner_padding"
+            android:scaleType="fitXY"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/banner_height"
+            android:padding="@dimen/banner_padding"
+            android:src="@drawable/banner_globe"
+            android:scaleType="fitXY"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

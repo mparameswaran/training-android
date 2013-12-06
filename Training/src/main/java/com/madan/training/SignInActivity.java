@@ -33,6 +33,7 @@ public class SignInActivity extends Activity{
                     SharedPreferences preferences = getApplicationContext().getSharedPreferences("default_preferences", context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putBoolean("isLoggedIn",true);
+                    editor.putBoolean("didLogOut",false);
                     editor.putString("username", username.getText().toString().trim());
                     editor.commit();
                     Intent intent = new Intent(signInActivity, TrainingMainActivity.class);

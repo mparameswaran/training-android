@@ -13,12 +13,13 @@
             android:layout_height="wrap_content"
             android:src="@drawable/bullet_accept"
             android:paddingRight="@dimen/banner_padding"
-            android:paddingTop="@dimen/banner_padding"/>
+            android:paddingTop="@dimen/banner_padding"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/learning_objective"
-            android:paddingTop="@dimen/banner_padding"
+
             />
     </LinearLayout>
 
