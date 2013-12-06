@@ -17,27 +17,131 @@
         android:inputType="textVisiblePassword"/>
 
     <LinearLayout
-        android:id="@+id/banners"
+        android:id="@+id/signed_in_banners"
+        android:paddingTop="@dimen/training_padding"
         android:layout_below="@+id/signed_in_input_search"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/banner_height"
+        android:layout_height="@dimen/signed_in_banner_height"
         android:orientation="horizontal"
         android:weightSum="2">
-        <ImageView
+        <RelativeLayout
+            android:paddingTop="@dimen/training_padding"
             android:layout_width="0dp"
-            android:layout_height="@dimen/banner_height"
-            android:src="@drawable/banner_amazon"
-            android:padding="@dimen/banner_padding"
-            android:scaleType="fitXY"
-            android:layout_weight="1"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="@dimen/banner_height"
-            android:padding="@dimen/banner_padding"
-            android:src="@drawable/banner_globe"
-            android:scaleType="fitXY"
-            android:layout_weight="1"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/geek_o_meter"
+                android:id="@+id/geek_meter_title"
+                android:paddingLeft="@dimen/banner_padding"
+                android:paddingBottom="@dimen/banner_padding"
+                android:textStyle="bold"
+                android:textSize="@dimen/did_you_know_title_size"/>
+            <ImageView
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/geek_meter_title"
+            android:src="@drawable/ic_health_meter"
+            android:padding="@dimen/banner_padding"
+            android:scaleType="fitXY"
+                android:id="@+id/geek_meter_icon"
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/geek_health_percent"
+                android:layout_below="@+id/geek_meter_title"
+                android:paddingTop="@dimen/banner_padding"
+                android:paddingRight="@dimen/training_padding"
+                android:layout_toRightOf="@+id/geek_meter_icon"
+                android:id="@+id/geek_health_percent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/geek_health_percent"
+                android:layout_toRightOf="@+id/geek_meter_icon"
+                android:paddingTop="@dimen/banner_padding"
+                android:paddingRight="@dimen/training_padding"
+                android:text="@string/geek_health_points"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:paddingTop="@dimen/training_padding"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/did_you_know_yellow">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/banner_padding"
+            android:drawableLeft="@drawable/ic_info_pencil"
+            android:drawablePadding="@dimen/training_padding"
+            android:text="@string/did_you_know"
+            android:textStyle="bold"
+            android:textSize="@dimen/did_you_know_title_size"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/did_you_know_title"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/did_you_know_title"
+            android:text="@string/lorem_ipsum_short"
+            android:paddingBottom="@dimen/banner_padding"
+            android:paddingLeft="@dimen/banner_padding"
+            android:layout_marginLeft="@dimen/banner_padding"/>
+    </RelativeLayout>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/training_padding"
+        android:layout_below="@+id/signed_in_banners"
+        android:layout_marginTop="@dimen/training_padding"
+        android:text="@string/you_might_like"
+        android:textSize="@dimen/default_title_size"
+        android:id="@+id/you_might_like"/>
+<HorizontalScrollView
+    android:layout_width="match_parent"
+    android:layout_below="@+id/you_might_like"
+    android:layout_height="@dimen/banner_height"
+    android:scrollbars="horizontal"
+    android:scrollbarStyle="outsideOverlay"
+    android:overScrollMode="never">
+        <LinearLayout
+            android:layout_below="@+id/you_might_like"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/banner_height"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/like_finance"
+                android:padding="@dimen/banner_padding"/>
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/banner_finance"
+
+                android:padding="@dimen/banner_padding"/>
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/banner_learning"
+                android:padding="@dimen/banner_padding"/>
+
+
+        </LinearLayout>
+</HorizontalScrollView>
 
 </RelativeLayout>

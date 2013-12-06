@@ -36,5 +36,11 @@
     <string name="learning_objective_three">Sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="logout">Logout</string>
     <string name="logged_out">Logout successful</string>
+    <string name="geek_o_meter">Geek O\' Meter</string>
+    <string name="geek_health_percent">78% Healthy</string>
+    <string name="geek_health_points">287 Points</string>
+    <string name="did_you_know">Did You Know?</string>
+    <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="you_might_like">You might Also Like...</string>
 
 </resources>

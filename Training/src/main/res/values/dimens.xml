@@ -16,5 +16,7 @@
     <dimen name="banner_padding">5dp</dimen>
     <dimen name="about_training_text">125dp</dimen>
     <dimen name="default_title_size">20dp</dimen>
+    <dimen name="did_you_know_title_size">16dp</dimen>
+    <dimen name="signed_in_banner_height">175dp</dimen>
 
 </resources>
