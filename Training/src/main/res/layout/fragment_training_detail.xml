@@ -61,15 +61,56 @@
                  </ListView>
 
             </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:paddingLeft="@dimen/training_padding"
+                android:id="@+id/overall_rating_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/training_padding"
+                android:text="@string/overall_rating_title"
+                android:paddingBottom="@dimen/banner_padding"
+                android:textStyle="bold"/>
+
             <RatingBar
+                android:layout_marginLeft="@dimen/training_padding"
                 android:id="@+id/overall_rating"
                 style="@style/CustomRatingBar"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:progressDrawable="@drawable/rating_star_gold"
                 android:numStars="5"
-                android:layout_marginTop="50dp"
                 />
+
+            <TextView
+                android:paddingLeft="@dimen/training_padding"
+                android:id="@+id/my_rating_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/training_padding"
+                android:text="@string/my_rating"
+                android:paddingBottom="@dimen/banner_padding"
+                android:textStyle="bold"
+                android:clickable="true"/>
+
+            <RatingBar
+                android:layout_marginLeft="@dimen/training_padding"
+                android:id="@+id/my_rating"
+                style="@style/CustomRatingBar"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:progressDrawable="@drawable/rating_star_gold"
+                android:numStars="5"
+                android:visibility="invisible"
+                android:clickable="true"
+                />
+
+            </LinearLayout>
+
      </LinearLayout>
 
 </RelativeLayout>

@@ -17,6 +17,9 @@ import android.widget.EditText;
  */
 public class SignInActivity extends Activity{
 
+    public static Activity mCallingActivity;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +39,7 @@ public class SignInActivity extends Activity{
                     editor.putBoolean("didLogOut",false);
                     editor.putString("username", username.getText().toString().trim());
                     editor.commit();
-                    Intent intent = new Intent(signInActivity, TrainingMainActivity.class);
+                    Intent intent = new Intent(signInActivity, mCallingActivity.getClass());
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
@@ -60,6 +63,7 @@ public class SignInActivity extends Activity{
             }
         });
     }
+
 
 
 }

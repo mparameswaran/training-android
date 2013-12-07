@@ -32,6 +32,7 @@ public class TrainingMainActivity extends Activity {
         SharedPreferences preferences = this.getApplicationContext().getSharedPreferences("default_preferences", this.MODE_PRIVATE);
         setIsLoggedInFlag(preferences.getBoolean("isLoggedIn", false));
         PlaceholderFragment defaultHomeScreen = new PlaceholderFragment(this);
+        SignInActivity.mCallingActivity = TrainingMainActivity.this;
         if(preferences.getBoolean("didLogOut",false)){
             Toast.makeText(this, getResources().getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
 
@@ -49,7 +50,7 @@ public class TrainingMainActivity extends Activity {
             else{
 
 
-                getFragmentManager().beginTransaction().replace(R.id.container, new SignedInHomeScreenFragment(this)).commit();
+                getFragmentManager().beginTransaction().add(R.id.container, new SignedInHomeScreenFragment(this)).commit();
 
             }
 

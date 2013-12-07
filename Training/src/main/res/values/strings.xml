@@ -42,5 +42,8 @@
     <string name="did_you_know">Did You Know?</string>
     <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="you_might_like">You might Also Like...</string>
+    <string name="overall_rating_title">Overall Rating</string>
+    <string name="my_rating">Sign In to rate</string>
+    <string name="signed_in_my_rating_title">My Rating</string>
 
 </resources>

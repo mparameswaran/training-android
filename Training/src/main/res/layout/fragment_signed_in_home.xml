@@ -121,24 +121,29 @@
             >
 
             <ImageView
+                android:id="@+id/market"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/like_finance"
-                android:padding="@dimen/banner_padding"/>
+                android:padding="@dimen/banner_padding"
+                android:clickable="true"/>
 
             <ImageView
+                android:id="@+id/finance"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/banner_finance"
-
+                android:clickable="true"
                 android:padding="@dimen/banner_padding"/>
 
             <ImageView
+                android:id="@+id/learning"
                 android:layout_width="130dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/banner_learning"
-                android:padding="@dimen/banner_padding"/>
+                android:padding="@dimen/banner_padding"
+                android:clickable="true"/>
 
 
         </LinearLayout>
