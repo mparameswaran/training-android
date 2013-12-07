@@ -18,5 +18,7 @@
     <dimen name="default_title_size">20dp</dimen>
     <dimen name="did_you_know_title_size">16dp</dimen>
     <dimen name="signed_in_banner_height">175dp</dimen>
+    <dimen name="detail_carousel">115dp</dimen>
+    <dimen name="people_also_attended">15dp</dimen>
 
 </resources>

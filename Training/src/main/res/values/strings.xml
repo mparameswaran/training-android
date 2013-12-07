@@ -26,7 +26,8 @@
     <string name="module_title">New MDC Modules</string>
     <string name="action_about">About</string>
     <string name="about_title">Learning</string>
-    <string name="about_message">This android application is simply a proof of concept. Some functionality may not work as intended. All images are merely placeholders.</string>
+    <string name="about_message">This android application is simply a proof of concept. Some functionality may not work as intended. All images are merely placeholders. This app is best viewed on a Nexus 4 or a device with similar screen size running Android 4.2 or later.
+    </string>
     <string name="view_by_theme">View by Theme</string>
     <string name="title_activity_training_detail">Detail</string>
     <string name="about_this_training">About This Training</string>
@@ -40,10 +41,13 @@
     <string name="geek_health_percent">78% Healthy</string>
     <string name="geek_health_points">287 Points</string>
     <string name="did_you_know">Did You Know?</string>
-    <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod et dolore magna aliqua.</string>
     <string name="you_might_like">You might Also Like...</string>
     <string name="overall_rating_title">Overall Rating</string>
     <string name="my_rating">Sign In to rate</string>
     <string name="signed_in_my_rating_title">My Rating</string>
+    <string name="not_yet_rated">Not yet rated. Click to rate!</string>
+    <string name="rating_not_functional">This feature has not yet been implemented in this proof of concept.</string>
+    <string name="sign_in_not_functional">Signing in from the training detail screen has not been implemented in this proof of concept.</string>
 
 </resources>

@@ -2,21 +2,23 @@ package com.madan.training;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,12 +33,14 @@ public class TrainingDetail extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setTitle(getIntent().getStringExtra("title"));
 
-        if (savedInstanceState == null) {
+        if(savedInstanceState == null)
+        {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment(this, getIntent().getStringExtra("title")))
                     .commit();
         }
     }
+
 
 
     @Override
@@ -53,8 +57,21 @@ public class TrainingDetail extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.action_about:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(getResources().getString(R.string.about_title));
+                builder.setMessage(getResources().getString(R.string.about_message));
+                builder.setPositiveButton(getResources().getString(R.string.okay),new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -84,7 +101,8 @@ public class TrainingDetail extends Activity {
             for(int i = 0; i < learningObjectives.length; i++){
                 listOfObjectives.add(learningObjectives[i]);
             }
-
+            setClickListenerForImageViews(rootView);
+            setImageViewBehavior(rootView);
             ListView listView = (ListView) rootView.findViewById(R.id.learning_objectives_list);
             LearningObjectiveAdapter adapter = new LearningObjectiveAdapter(this.getActivity(),R.layout.learning_objective_list_item,listOfObjectives);
             listView.setAdapter(adapter);
@@ -93,22 +111,32 @@ public class TrainingDetail extends Activity {
             Boolean isLoggedIn = preferences.getBoolean("isLoggedIn",false);
             TextView myRatingText = (TextView) rootView.findViewById(R.id.my_rating_title);
             RatingBar myRating = (RatingBar) rootView.findViewById(R.id.my_rating);
-            RatingBar overallRating = (RatingBar)rootView.findViewById(R.id.overall_rating);
-            rate(overallRating);
+
+            rateOverall(rootView);
+            TextView peopleAttended = (TextView) rootView.findViewById(R.id.people_also_attended);
+            peopleAttended.setText(String.format("People who attended %s also attended...", getDetailTitle()));
+
             if(isLoggedIn){
 
                 myRatingText.setText(R.string.signed_in_my_rating_title);
                 myRating.setVisibility(View.VISIBLE);
-                myRating(myRating);
+                myRating(rootView);
             }
             else{
                 myRatingText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-//                        SignInActivity.mCallingActivity = getDetailActivity();
-//                        Intent intent = new Intent(getDetailActivity(), SignInActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                        startActivity(intent);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getDetailActivity());
+                        builder.setTitle(String.format("Sign In",getDetailTitle()));
+                        builder.setMessage(R.string.sign_in_not_functional);
+                        builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
                     }
                 });
                 myRating.setVisibility(View.INVISIBLE);
@@ -117,36 +145,188 @@ public class TrainingDetail extends Activity {
             return rootView;
         }
 
-        private void myRating(RatingBar myRating) {
+        private void setImageViewBehavior(View rootView) {
+
+
+            RelativeLayout eCommerce = (RelativeLayout) rootView.findViewById(R.id.training_one);
+            RelativeLayout rails = (RelativeLayout) rootView.findViewById(R.id.training_two);
+            RelativeLayout dynamicsAX = (RelativeLayout)rootView.findViewById(R.id.training_three);
+            RelativeLayout android = (RelativeLayout) rootView.findViewById(R.id.training_four);
+            RelativeLayout git =(RelativeLayout) rootView.findViewById(R.id.training_five);
+            RelativeLayout python = (RelativeLayout) rootView.findViewById(R.id.training_six);
+
+
+
+            if(getDetailTitle().equals(getResources().getString(R.string.training_one))){
+
+                rails.setVisibility(View.GONE);
+                git.setVisibility(View.GONE);
+                eCommerce.setVisibility(View.GONE);
+
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_two))){
+
+                rails.setVisibility(View.GONE);
+                eCommerce.setVisibility(View.GONE);
+                dynamicsAX.setVisibility(View.GONE);
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_three))){
+
+                rails.setVisibility(View.GONE);
+                git.setVisibility(View.GONE);
+                android.setVisibility(View.GONE);
+                python.setVisibility(View.GONE);
+                dynamicsAX.setVisibility(View.GONE);
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_four))){
+
+                eCommerce.setVisibility(View.GONE);
+                dynamicsAX.setVisibility(View.GONE);
+                rails.setVisibility(View.GONE);
+                android.setVisibility(View.GONE);
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_five))){
+
+                git.setVisibility(View.GONE);
+                eCommerce.setVisibility(View.GONE);
+                dynamicsAX.setVisibility(View.GONE);
+                android.setVisibility(View.GONE);
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_six))){
+
+                python.setVisibility(View.GONE);
+                rails.setVisibility(View.GONE);
+                android.setVisibility(View.GONE);
+                dynamicsAX.setVisibility(View.GONE);
+            }
             if(getDetailTitle().equals("Market")){
-                myRating.setRating((float) 2.5);
+
+                git.setVisibility(View.GONE);
+                rails.setVisibility(View.GONE);
             }
             if(getDetailTitle().equals("Finance")){
-                myRating.setRating((float) 4.5);
+
+                android.setVisibility(View.GONE);
+                python.setVisibility(View.GONE);
             }
             if(getDetailTitle().equals("Learning")){
-                myRating.setRating((float) 4.0);
+
+                eCommerce.setVisibility(View.GONE);
+                dynamicsAX.setVisibility(View.GONE);
+            }
+
+        }
+
+        private void setClickListenerForImageViews(View rootView) {
+            final View replaceView = rootView;
+            LinearLayout carousel = (LinearLayout) rootView.findViewById(R.id.detail_screen_carousel);
+            final int trainingPrograms = carousel.getChildCount();
+            for (int i = 0; i < trainingPrograms; i++){
+
+                RelativeLayout trainingProgram = (RelativeLayout) carousel.getChildAt(i);
+                final TextView trainingTextView = (TextView) trainingProgram.getChildAt(1);
+                trainingProgram.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        String training = trainingTextView.getText().toString();
+
+                        getDetailActivity().getActionBar().setTitle(training);
+
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.container, new TrainingDetail.PlaceholderFragment(getDetailActivity(), training));
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+
+
+                    }
+                });
+
             }
         }
 
-        private void rate(RatingBar overallRating) {
+        private void myRating( View rootView) {
+            RatingBar myRating = (RatingBar) rootView.findViewById(R.id.my_rating);
+            if(getDetailTitle().equals("Market")){
+                myRating.setRating((float) 2.5);
+                return;
+            }
+            if(getDetailTitle().equals("Finance")){
+                myRating.setRating((float) 4.5);
+                return;
+            }
+            if(getDetailTitle().equals("Learning")){
+                myRating.setRating((float) 4.0);
+                return;
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_one))){
+                myRating.setRating((float) 0.0);
+                notYetRated(rootView);
+                return;
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_two))){
+                myRating.setRating((float) 4.5);
+                return;
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_three))){
+                myRating.setRating((float) 2.0);
+                return;
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_four))){
+                myRating.setRating((float) 0.0);
+                notYetRated(rootView);
+                return;
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_five))){
+                myRating.setRating((float) 4.5);
+                return;
+            }
+            if(getDetailTitle().equals(getResources().getString(R.string.training_six))){
+                myRating.setRating((float) 3.0);
+                return;
+            }
+        }
 
-            if(getDetailTitle().equals(R.string.training_one)){
+        private void notYetRated(View rootView) {
+            TextView myRatingTitle = (TextView) rootView.findViewById(R.id.my_rating_title);
+            myRatingTitle.setText(R.string.not_yet_rated);
+            myRatingTitle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getDetailActivity());
+                    builder.setTitle(String.format("Rate %s",getDetailTitle()));
+                    builder.setMessage(R.string.rating_not_functional);
+                    builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            });
+        }
+
+        private void rateOverall(View rootView) {
+
+            RatingBar overallRating = (RatingBar) rootView.findViewById(R.id.overall_rating);
+            if(getDetailTitle().equals(getResources().getString(R.string.training_one))){
                 overallRating.setRating((float) 3.5);
             }
-            if(getDetailTitle().equals(R.string.training_two)){
+            if(getDetailTitle().equals(getResources().getString(R.string.training_two))){
                 overallRating.setRating((float) 4.5);
             }
-            if(getDetailTitle().equals(R.string.training_three)){
+            if(getDetailTitle().equals(getResources().getString(R.string.training_three))){
                 overallRating.setRating((float) 3.5);
             }
-            if(getDetailTitle().equals(R.string.training_four)){
+            if(getDetailTitle().equals(getResources().getString(R.string.training_four))){
                 overallRating.setRating((float) 3.0);
             }
-            if(getDetailTitle().equals(R.string.training_five)){
+            if(getDetailTitle().equals(getResources().getString(R.string.training_five))){
                 overallRating.setRating((float) 4.0);
             }
-            if(getDetailTitle().equals(R.string.training_six)){
+            if(getDetailTitle().equals(getResources().getString(R.string.training_six))){
                 overallRating.setRating((float) 4.0);
             }
             if(getDetailTitle().equals("Market")){

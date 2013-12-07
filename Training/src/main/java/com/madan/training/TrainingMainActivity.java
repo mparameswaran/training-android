@@ -35,6 +35,7 @@ public class TrainingMainActivity extends Activity {
         SignInActivity.mCallingActivity = TrainingMainActivity.this;
         if(preferences.getBoolean("didLogOut",false)){
             Toast.makeText(this, getResources().getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
+            preferences.edit().putBoolean("didLogOut",false).commit();
 
         }
         if (savedInstanceState == null) {
