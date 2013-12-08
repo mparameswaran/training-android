@@ -21,5 +21,8 @@
     <dimen name="detail_carousel">115dp</dimen>
     <dimen name="people_also_attended">15dp</dimen>
     <dimen name="register_button_height">40dp</dimen>
+    <dimen name="search_image_height">90dp</dimen>
+    <dimen name="search_image_width">115dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
 
 </resources>

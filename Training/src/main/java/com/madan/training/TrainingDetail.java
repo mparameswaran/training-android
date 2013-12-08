@@ -252,7 +252,7 @@ public class TrainingDetail extends Activity {
 
                         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.container, new TrainingDetail.PlaceholderFragment(getDetailActivity(), training));
-                        fragmentTransaction.addToBackStack(null);
+//                        fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
 
 
