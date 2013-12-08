@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/did_you_know_title"
-            android:text="@string/lorem_ipsum_short"
+            android:text="@string/lorem_ipsum_did_you_know"
             android:paddingBottom="@dimen/banner_padding"
             android:paddingLeft="@dimen/banner_padding"
             android:layout_marginLeft="@dimen/banner_padding"/>

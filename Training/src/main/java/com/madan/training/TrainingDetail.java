@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -30,8 +31,6 @@ public class TrainingDetail extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_detail);
-        ActionBar actionBar = getActionBar();
-        actionBar.setTitle(getIntent().getStringExtra("title"));
 
         if(savedInstanceState == null)
         {
@@ -103,6 +102,8 @@ public class TrainingDetail extends Activity {
             }
             setClickListenerForImageViews(rootView);
             setImageViewBehavior(rootView);
+            TextView aboutTraining = (TextView) rootView.findViewById(R.id.about_this_training);
+            aboutTraining.setText(String.format("About %s Training", getDetailTitle()));
             ListView listView = (ListView) rootView.findViewById(R.id.learning_objectives_list);
             LearningObjectiveAdapter adapter = new LearningObjectiveAdapter(this.getActivity(),R.layout.learning_objective_list_item,listOfObjectives);
             listView.setAdapter(adapter);
@@ -115,7 +116,23 @@ public class TrainingDetail extends Activity {
             rateOverall(rootView);
             TextView peopleAttended = (TextView) rootView.findViewById(R.id.people_also_attended);
             peopleAttended.setText(String.format("People who attended %s also attended...", getDetailTitle()));
+            Button register = (Button) rootView.findViewById(R.id.register_button);
+            register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getDetailActivity());
+                    builder.setTitle(getResources().getString(R.string.register_button_title));
+                    builder.setMessage(getResources().getString(R.string.register_not_functional));
+                    builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            });
             if(isLoggedIn){
 
                 myRatingText.setText(R.string.signed_in_my_rating_title);

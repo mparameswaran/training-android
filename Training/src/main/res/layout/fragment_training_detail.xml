@@ -21,12 +21,13 @@
             android:text="@string/about_this_training"
             android:textSize="@dimen/default_title_size"
             android:paddingBottom="@dimen/training_padding"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:id="@+id/about_this_training"/>
         <TextView
             android:text="@string/lorem_ipsum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/banner_padding"/>
+            android:padding="@dimen/training_padding"/>
 
     </LinearLayout>
 
@@ -63,7 +64,7 @@
 
             </LinearLayout>
         <LinearLayout
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -72,7 +73,7 @@
                 android:id="@+id/overall_rating_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/training_padding"
+                android:paddingTop="@dimen/banner_padding"
                 android:text="@string/overall_rating_title"
                 android:paddingBottom="@dimen/banner_padding"
                 android:textStyle="bold"/>
@@ -121,6 +122,13 @@
                 android:paddingBottom="@dimen/banner_padding"
                 android:background="@color/did_you_know_yellow"/>
 
+            <Button
+                android:layout_height="@dimen/register_button_height"
+                android:layout_width="wrap_content"
+                android:text="@string/register"
+                android:id="@+id/register_button"
+                android:layout_gravity="right"
+               />
             </LinearLayout>
 
      </LinearLayout>
@@ -128,7 +136,6 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_below="@+id/objectives_rating_block"
-        android:layout_marginTop="@dimen/banner_padding"
         android:padding="@dimen/banner_padding"
         android:id="@+id/people_also_attended"
         android:textStyle="bold"
@@ -137,7 +144,7 @@
         android:layout_height="@dimen/detail_carousel"
         android:layout_width="wrap_content"
         android:layout_below="@+id/people_also_attended"
-        android:layout_marginTop="@dimen/training_padding">
+       >
 
         <LinearLayout
             android:id="@+id/detail_screen_carousel"
@@ -320,6 +327,8 @@
                     android:textColor="@android:color/white"
 
                     />
+
+
 
 
             </RelativeLayout>
