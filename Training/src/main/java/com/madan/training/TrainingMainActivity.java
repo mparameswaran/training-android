@@ -9,17 +9,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrainingMainActivity extends Activity {
     private Boolean isLoggedInFlag;
@@ -39,7 +44,8 @@ public class TrainingMainActivity extends Activity {
 
         }
         EditText search = (EditText) findViewById(R.id.input_search);
-
+        search.setImeActionLabel(getResources().getString(R.string.search_keyboard), KeyEvent.KEYCODE_ENTER);
+        setSearchClickListener(search);
         if (savedInstanceState == null) {
             if(!getIsLoggedInFlag()){
  
@@ -61,6 +67,45 @@ public class TrainingMainActivity extends Activity {
         else {
             this.savedInstanceState = savedInstanceState;
         }
+    }
+
+    private void setSearchClickListener(EditText search) {
+        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+
+                if(keyEvent != null)
+                {
+                    showSearchResults(textView.getText().toString());
+
+                }
+
+                return false;
+            }
+        });
+    }
+
+    private void showSearchResults(String s) {
+        String[] hardcodedSearchTerms = {"rails 4","rails","ruby","git","android","amazon"};
+        if(s.equals(hardcodedSearchTerms[0])||s.equals(hardcodedSearchTerms[1])){
+            //show rails results
+        }
+        else if(s.equals(hardcodedSearchTerms[2])){
+            //show ruby results
+        }
+        else if(s.equals(hardcodedSearchTerms[3])){
+            //show git results
+        }
+        else if(s.equals(hardcodedSearchTerms[4])){
+            //show android results
+        }
+        else if(s.equals(hardcodedSearchTerms[5])){
+            //show amazon results
+        }
+        else{
+            //show no results found
+        }
+
     }
 
     @Override

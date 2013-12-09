@@ -53,5 +53,6 @@
     <string name="register">Register</string>
     <string name="register_button_title">Register</string>
     <string name="register_not_functional">A real app would actually let you register, however this is just a proof of concept and this feature has not been implemented :(</string>
+    <string name="search_keyboard">Search</string>
 
 </resources>
