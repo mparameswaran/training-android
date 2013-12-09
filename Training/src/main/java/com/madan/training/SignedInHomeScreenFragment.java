@@ -34,6 +34,7 @@ public class SignedInHomeScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_signed_in_home, container, false);
+        rootView.requestFocus();
         ImageView market = (ImageView) rootView.findViewById(R.id.market);
         ImageView finance = (ImageView) rootView.findViewById(R.id.finance);
         ImageView learning = (ImageView) rootView.findViewById(R.id.learning);

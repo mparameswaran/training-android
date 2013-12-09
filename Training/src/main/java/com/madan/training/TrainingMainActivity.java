@@ -35,16 +35,18 @@ public class TrainingMainActivity extends Activity {
         SignInActivity.mCallingActivity = TrainingMainActivity.this;
         if(preferences.getBoolean("didLogOut",false)){
             Toast.makeText(this, getResources().getString(R.string.logged_out), Toast.LENGTH_SHORT).show();
-            preferences.edit().putBoolean("didLogOut",false).commit();
+            preferences.edit().putBoolean("didLogOut", false).commit();
 
         }
+        EditText search = (EditText) findViewById(R.id.input_search);
+
         if (savedInstanceState == null) {
             if(!getIsLoggedInFlag()){
-
-
+ 
                     getFragmentManager().beginTransaction()
                         .replace(R.id.container, defaultHomeScreen)
                         .commit();
+                search.setHint(getResources().getString(R.string.search_KLOUD));
 
 
             }
@@ -52,7 +54,7 @@ public class TrainingMainActivity extends Activity {
 
 
                 getFragmentManager().beginTransaction().add(R.id.container, new SignedInHomeScreenFragment(this)).commit();
-
+                search.setHint(getResources().getString(R.string.keeping_you_awake));
             }
 
         }
@@ -194,9 +196,7 @@ public class TrainingMainActivity extends Activity {
                 @Override
                 public void onClick(View view) {
 
-                    Log.i("Click", "sign in");
-                    Intent intent = new Intent(getMainMactivity(), TrainingDetail.class);
-                    startActivity(intent);
+
                 }
             });
 

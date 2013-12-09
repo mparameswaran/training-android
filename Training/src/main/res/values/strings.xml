@@ -26,7 +26,7 @@
     <string name="module_title">New MDC Modules</string>
     <string name="action_about">About</string>
     <string name="about_title">Learning</string>
-    <string name="about_message">This android application is simply a proof of concept. Some functionality may not work as intended. All images are merely placeholders. This app is best viewed on a Nexus 4 or a device with similar screen size running Android 4.2 or later.
+    <string name="about_message">This android application is simply a proof of concept. Some functionality may not work as intended. All images are merely placeholders. This app is best viewed on a Nexus 4 or a device with similar screen size running Android 4.0.3 or later.
     </string>
     <string name="view_by_theme">View by Theme</string>
     <string name="title_activity_training_detail">Learning</string>

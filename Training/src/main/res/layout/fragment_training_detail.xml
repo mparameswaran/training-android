@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@string/about_this_training"
             android:textSize="@dimen/default_title_size"
-            android:paddingBottom="@dimen/training_padding"
+            android:paddingBottom="@dimen/banner_padding"
             android:textStyle="bold"
             android:id="@+id/about_this_training"/>
         <TextView
@@ -50,7 +50,7 @@
                      android:id="@+id/learning_objectives_title"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:paddingTop="@dimen/training_padding"
+                     android:paddingTop="@dimen/banner_padding"
                      android:text="@string/learning_objectives"
                      android:paddingBottom="@dimen/banner_padding"
                      android:textStyle="bold"/>
@@ -144,6 +144,7 @@
         android:layout_height="@dimen/detail_carousel"
         android:layout_width="wrap_content"
         android:layout_below="@+id/people_also_attended"
+        android:overScrollMode="never"
        >
 
         <LinearLayout
@@ -174,7 +175,7 @@
                     android:paddingTop="50dp"
                     android:textAlignment="gravity"
                     android:text="@string/training_one"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="bold|italic"
                     android:textColor="@android:color/white"/>
             </RelativeLayout>
@@ -201,7 +202,7 @@
                     android:layout_centerInParent="true"
                     android:textAlignment="gravity"
                     android:text="@string/training_two"
-                    android:textSize="30dp"
+                    android:textSize="30sp"
                     android:textColor="@android:color/white"/>
             </RelativeLayout>
             <RelativeLayout
@@ -227,7 +228,7 @@
                     android:layout_centerInParent="true"
                     android:textAlignment="gravity"
                     android:text="@string/training_three"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"/>
 
@@ -258,7 +259,7 @@
                     android:layout_alignParentBottom="true"
                     android:textAlignment="gravity"
                     android:text="@string/training_four"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
 
@@ -291,7 +292,7 @@
                     android:paddingLeft="70dp"
                     android:textAlignment="gravity"
                     android:text="@string/training_five"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
 
@@ -322,7 +323,7 @@
                     android:layout_centerInParent="true"
                     android:textAlignment="gravity"
                     android:text="@string/training_six"
-                    android:textSize="20dp"
+                    android:textSize="16sp"
                     android:textStyle="italic"
                     android:textColor="@android:color/white"
 

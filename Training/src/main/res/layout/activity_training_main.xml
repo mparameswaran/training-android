@@ -5,5 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".TrainingMainActivity"
     tools:ignore="MergeRootFrame" >
-
+    <EditText android:id="@+id/input_search"
+        android:layout_marginTop="@dimen/training_padding"
+        android:layout_marginLeft="@dimen/training_padding"
+        android:layout_marginRight="@dimen/training_padding"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ic_search"
+        android:drawablePadding="5dp"
+        android:hint="@string/search_KLOUD"
+        android:inputType="textVisiblePassword"/>
 </FrameLayout>
