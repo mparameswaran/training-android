@@ -8,4 +8,5 @@
         <item name="android:maxHeight">32px</item>
         <item name="android:minHeight">32px</item>
     </style>
+    <style name="NoActionBar" parent="android:Theme.Holo.NoActionBar"></style>
 </resources>
